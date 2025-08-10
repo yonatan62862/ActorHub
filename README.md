@@ -1,6 +1,6 @@
 # ActorHub – Full-Stack Take-Home
 
-Full-stack app that fetches the cast of TV show **“Under the Dome”** from TVMaze, caches results in memory (with TTL and optional **prewarm on startup**), lets you **add/delete comments per actor** (persisted to a `.txt` file), and displays everything in a modern, responsive React UI.
+Full-stack app that fetches the cast of TV show **“Under the Dome”** from TVMaze, caches results in memory (with TTL and optional **prewarm on startup**), lets you **add comments per actor** (persisted to a `.txt` file), and displays everything in a modern, responsive React UI.
 
 > Stack: **Node.js + Express + TypeScript** (server) · **React + Vite + TypeScript** (client) · **Axios** · **React Query** · **Tailwind** (dark mode)  
 > Bonus implemented: **Prewarm cache** on server startup.
@@ -12,7 +12,7 @@ Full-stack app that fetches the cast of TV show **“Under the Dome”** from TV
 - **Web API** (Express) that calls the external API: `https://api.tvmaze.com/shows/1/cast`.
 - **In-memory cache** (NodeCache) with configurable **TTL** (default 5m) and **manual delete per actor**.
 - **Config-driven**: change cache TTL via config/env.
-- **Comments**: Add/delete per actor; persisted line-by-line as JSON to `data/comments.txt`.
+- **Comments**: Add per actor; persisted line-by-line as JSON to `data/comments.txt`.
 - **Client** (React + Vite):
   - Responsive layout (sidebar list of IDs, details panel, comments).
   - **Dark mode** (toggle + persistence).
@@ -78,7 +78,8 @@ Full-stack app that fetches the cast of TV show **“Under the Dome”** from TV
 │   │   └── Loading.tsx
 │   ├── hooks
 │   │   ├── useCast.ts
-│   │   └── useComments.ts
+│   │   └── useComments.ts 
+        └── useTheme.ts
 │   ├── index.css
 │   ├── lib
 │   │   └── api.ts

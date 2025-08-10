@@ -1,0 +1,56 @@
+###
+# Health
+GET http://localhost:3000/health
+
+###
+# Cast list (1) — expect source:"api"
+GET http://localhost:3000/api/cast
+
+###
+# Cast list (2) — within TTL expect source:"cache"
+GET http://localhost:3000/api/cast
+
+###
+# Actor IDs
+GET http://localhost:3000/api/actors/ids
+
+###
+# Single actor by id (change the id if needed)
+GET http://localhost:3000/api/cast/1
+
+###
+# Add comment for actor 1
+POST http://localhost:3000/api/cast/14/comment
+Content-Type: application/json
+
+{
+  "comment": "Manual test via REST Client"
+}
+
+###
+# List all comments
+GET http://localhost:3000/api/comments
+
+###
+# Delete actor 1 from cache
+DELETE http://localhost:3000/api/cast/1/cache
+
+###
+# Cast list after deletion (may still be cache unless TTL expired)
+GET http://localhost:3000/api/cast
+
+###
+# Negative test: invalid id for comment
+POST http://localhost:3000/api/cast/abc/comment
+Content-Type: application/json
+
+{
+  "comment": "Should fail"
+}
+
+###
+# Negative test: missing comment body
+POST http://localhost:3000/api/cast/1/comment
+Content-Type: application/json
+
+{}
